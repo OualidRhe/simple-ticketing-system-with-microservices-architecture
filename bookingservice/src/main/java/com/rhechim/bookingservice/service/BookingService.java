@@ -21,14 +21,19 @@ public class BookingService {
     }
 
     public BookingResponse createBooking(final BookingRequest request) {
+        // check if user exists
         final Customer customer = customerRepository.findById(request.getUserId()).orElse(null);
-
         if(customer == null) {
             throw new RuntimeException("Customer not found");
         }
 
         final InventoryResponse inventoryResponse = inventoryServiceClient.getInventory(request.getEventId());
+        if(inventoryResponse.getCapacity() < request.getTicketCount()) {
+            throw new RuntimeException("Capacity less than ticket count");
+        }
 
+        // Booking creation
+        
 
 
 
