@@ -46,7 +46,12 @@ public class BookingService {
 
         log.info("Booking created and sent to Kafka : {}", bookingEvent);
 
-        return new BookingResponse().builder().build();
+        return new BookingResponse().builder()
+                .userId(bookingEvent.getUserId())
+                .eventId(bookingEvent.getEventId())
+                .ticketCount(bookingEvent.getTicketCount())
+                .totalPrice(bookingEvent.getTotalPrice())
+                .build();
     }
 
     private BookingEvent createBookingEvent(final BookingRequest request,
