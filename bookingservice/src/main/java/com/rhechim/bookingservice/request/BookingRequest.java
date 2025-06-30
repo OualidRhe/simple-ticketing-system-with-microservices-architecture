@@ -15,5 +15,5 @@ public class BookingRequest {
     private Long userId;
     private Long eventId;
     private Long ticketCount;
-    private BigDecimal ticketPrice;
+    //private BigDecimal ticketPrice;
 }

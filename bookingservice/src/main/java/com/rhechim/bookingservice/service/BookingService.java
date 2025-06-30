@@ -56,7 +56,11 @@ public class BookingService {
                 .userId(customer.getId())
                 .eventId(request.getEventId())
                 .ticketCount(request.getTicketCount())
-                .totalPrice(request.getTicketPrice().multiply(BigDecimal.valueOf(request.getTicketCount())))
+                //.totalPrice(request.getTicketPrice().multiply(BigDecimal.valueOf(request.getTicketCount())))
+                .totalPrice(
+                        inventoryResponse.getTicketPrice()
+                                .multiply(BigDecimal.valueOf(request.getTicketCount()))
+                )
                 .build();
 
     }
