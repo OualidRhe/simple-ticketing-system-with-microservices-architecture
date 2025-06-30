@@ -1,4 +1,5 @@
-package com.rhechim.bookingservice.request;
+package com.rhechim.bookingservice.event;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,12 +9,13 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class BookingRequest {
+public class BookingEvent {
     private Long userId;
     private Long eventId;
     private Long ticketCount;
-    private BigDecimal ticketPrice;
+    private BigDecimal totalPrice;
+
 }
