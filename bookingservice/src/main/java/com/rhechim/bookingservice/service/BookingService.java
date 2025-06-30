@@ -1,5 +1,6 @@
 package com.rhechim.bookingservice.service;
 
+import com.rhechim.bookingservice.entity.Customer;
 import com.rhechim.bookingservice.repository.CustomerRepository;
 import com.rhechim.bookingservice.request.BookingRequest;
 import com.rhechim.bookingservice.response.BookingResponse;
@@ -17,6 +18,14 @@ public class BookingService {
     }
 
     public BookingResponse createBooking(final BookingRequest request) {
+        final Customer customer = customerRepository.findById(request.getUserId()).orElse(null);
+
+        if(customer == null) {
+            throw new RuntimeException("Customer not found");
+        }
+
+
+
         return new BookingResponse().builder().build();
     }
 }
