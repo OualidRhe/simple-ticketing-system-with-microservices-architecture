@@ -5,6 +5,7 @@ import com.rhechim.bookingservice.entity.Customer;
 import com.rhechim.bookingservice.repository.CustomerRepository;
 import com.rhechim.bookingservice.request.BookingRequest;
 import com.rhechim.bookingservice.response.BookingResponse;
+import com.rhechim.bookingservice.response.InventoryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,9 @@ public class BookingService {
         if(customer == null) {
             throw new RuntimeException("Customer not found");
         }
+
+        final InventoryResponse inventoryResponse = inventoryServiceClient.getInventory(request.getEventId());
+
 
 
 
